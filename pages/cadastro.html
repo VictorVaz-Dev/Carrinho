@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-4">
+                <h2 class="text-center">Faça seu cadastro aqui !</h2>
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="Digite seu email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" class="form-control" placeholder="Digite sua senha" required>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block" onclick="signup()">Cadastrar</button>
+                </form>
+                <div id="signupStatus" class="text-center mt-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs e o script principal como módulo -->
+    <script type="module">
+        // Importar os módulos do Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
+        // Configuração do Firebase (use a mesma configuração do seu projeto)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBeIch9XWW7h5xVtqH6x2N2tU2SnaQ3or8",
+            authDomain: "pimde2024.firebaseapp.com",
+            projectId: "pimde2024",
+            storageBucket: "pimde2024.firebasestorage.app",
+            messagingSenderId: "364129728751",
+            appId: "1:364129728751:web:1250d09a80108ae8e4c31a",
+            measurementId: "G-LVZVKNSX7H"
+        };
+
+
+        // Inicializar o Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Função de cadastro
+        window.signup = function() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    document.getElementById("signupStatus").innerText = "Cadastro realizado com sucesso!";
+                    console.log("Usuário cadastrado:", userCredential.user);
+                    window.location.href = "../../index.html";
+                })
+                .catch((error) => {
+                    document.getElementById("signupStatus").innerText = "Erro no cadastro: " + error.message;
+                    console.error("Erro no cadastro:", error);
+                });
+        }
+    </script>
+</body>
+</html>

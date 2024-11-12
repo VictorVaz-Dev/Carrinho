@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-4">
+                <h2 class="text-center">Login</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="Digite seu email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" class="form-control" placeholder="Digite sua senha" required>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block" onclick="login()">Entrar</button>
+                    <button type="button" class="btn btn-primary btn-block" onclick="cadastro()">Não tem uma conta? Cadastre-se aqui</button>
+                </form>
+                <div id="loginStatus" class="text-center mt-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para autenticação Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        import { getAuth, setPersistence, browserLocalPersistence, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBeIch9XWW7h5xVtqH6x2N2tU2SnaQ3or8",
+            authDomain: "pimde2024.firebaseapp.com",
+            projectId: "pimde2024",
+            storageBucket: "pimde2024.firebasestorage.app",
+            messagingSenderId: "364129728751",
+            appId: "1:364129728751:web:1250d09a80108ae8e4c31a",
+            measurementId: "G-LVZVKNSX7H"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        window.login = function() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            setPersistence(auth, browserLocalPersistence) // Configura persistência
+                .then(() => {
+                    return signInWithEmailAndPassword(auth, email, password);
+                })
+                .then((userCredential) => {
+                    document.getElementById("loginStatus").innerText = "Login realizado com sucesso!";
+                    console.log("Usuário logado:", userCredential.user);
+                    window.location.href = "./pages/home/home.html"; // Redireciona após login
+                })
+                .catch((error) => {
+                    document.getElementById("loginStatus").innerText = "Erro no login: " + error.message;
+                    console.error("Erro no login:", error);
+                });
+        };
+
+        window.cadastro = function() {
+            window.location.href = "./pages/cadastro.html";
+        };
+    </script>
+</body>
+</html>

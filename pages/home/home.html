@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compras</title>
+    <link rel="stylesheet" href="../../css/home/home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand"><b>Compre aqui</b></a>
+          <form class="d-flex" role="search">
+            <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#cartModal">&#x1F6D2; Carrinho</button>
+            <button type="button" class="btn btn-outline-danger" onclick="deslogar()">Sair</button>
+          </form>
+        </div>
+    </nav>
+
+    <div class="banner-home"></div>
+
+    <div class="paragrafo-produtos">
+        <p>Bem-vindo ao nosso site! Aqui, você encontra uma seleção cuidadosa de produtos de limpeza e alimentos para facilitar o seu dia a dia. Nossa missão é oferecer praticidade e qualidade em um só lugar, com itens essenciais para manter sua casa sempre limpa e abastecida. Trabalhamos com fornecedores de confiança para garantir que você receba produtos seguros e eficazes, que atendam às suas necessidades e proporcionem conforto e bem-estar.</p>
+        <p>Navegar pelo nosso site é fácil e rápido. Você pode escolher entre uma variedade de produtos de limpeza, desde sabonetes até detergentes, além de alimentos de consumo como grãos, massas, e snacks. Com apenas alguns cliques, você finaliza sua compra e recebe tudo diretamente em sua casa. Nossa prioridade é sua satisfação, por isso estamos sempre à disposição para oferecer suporte e tornar sua experiência de compra a melhor possível.</p>
+    </div>
+   
+    <h1 class="titulo-produto">Produtos de limpeza:</h1>
+    <!-- Seção de produtos de limpeza -->
+    <div class="container d-flex">
+        <div class="card" style="width: 18rem;">
+            <img src="../../assets/produtosLimpeza/bucha.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">Bucha</h5>
+            <p class="card-text">As buchas são essenciais para uma limpeza prática e eficiente...</p>
+            <a href="#" class="btn btn-primary" onclick="addToCart('Bucha')">Adicionar ao carrinho</a>            
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="../../assets/produtosLimpeza/detergente.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">Detergente</h5>
+            <p class="card-text">Encontre detergentes poderosos que removem gordura e sujeira com facilidade, deixando suas louças impecáveis. Escolha o seu e veja a diferença na limpeza!</p>
+            <a href="#" class="btn btn-primary" onclick="addToCart('Detergente')">Adicionar ao carrinho</a>            
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="../../assets/produtosLimpeza/sabonete.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">Sabonete</h5>
+            <p class="card-text">Descubra sabonetes suaves e perfumados que cuidam da sua pele, proporcionando limpeza e frescor diário. Escolha o seu favorito!</p>
+            <a href="#" class="btn btn-primary" onclick="addToCart('Sabonete')">Adicionar ao carrinho</a>            
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="../../assets/produtosLimpeza/shampoo.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">Shampoo</h5>
+            <p class="card-text">Explore nossos shampoos que limpam e nutrem profundamente, deixando seu cabelo mais saudável e brilhante. Encontre o ideal para você!</p>
+            <a href="#" class="btn btn-primary" onclick="addToCart('Shampoo')">Adicionar ao carrinho</a>            
+            </div>
+        </div>
+    </div>
+
+    <!-- Segunda coluna de produtos para consumo -->
+    <h1 class="titulo-produto">Produtos para consumo:</h1>
+    <div class="container d-flex">
+
+        <div class="card" style="width: 18rem;">
+            <img src="../../assets/produtosConsumo/arroz.jpg" class="card-img-top" alt="..." style="height: 18em;width: 200px;margin: 0px auto;">
+            <div class="card-body">
+            <h5 class="card-title">Arroz</h5>
+            <p class="card-text">Encontre arroz de qualidade, perfeito para preparar refeições saborosas e nutritivas. Escolha o tipo ideal e leve mais sabor à sua mesa!</p>
+            <a href="#" class="btn btn-primary" onclick="addToCart('Arroz')">Adicionar ao carrinho</a>            
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="../../assets/produtosConsumo/feijao.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">Feijão</h5>
+            <p class="card-text">Descubra nossos feijões frescos e selecionados, ideais para receitas deliciosas e ricas em nutrientes. Garanta o sabor e a qualidade em cada refeição!</p>
+            <a href="#" class="btn btn-primary" onclick="addToCart('Feijão')">Adicionar ao carrinho</a>            
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="../../assets/produtosConsumo/macarrao.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">Macarrão</h5>
+            <p class="card-text">Encontre diversas opções de macarrão para preparar pratos práticos e deliciosos. Escolha o tipo perfeito e traga mais sabor às suas receitas!</p>
+            <a href="#" class="btn btn-primary" onclick="addToCart('Macarrao')">Adicionar ao carrinho</a>           
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="../../assets/produtosConsumo/salgadinhos.jpg" class="card-img-top" alt="..." style="height: 18em;width: 200px;margin: 0px auto;">
+            <div class="card-body">
+            <h5 class="card-title">Salgadinhos</h5>
+            <p class="card-text">Explore nossa seleção de salgadinhos crocantes e saborosos, perfeitos para qualquer ocasião. Escolha seus favoritos e aproveite cada mordida!</p>
+            <a href="#" class="btn btn-primary" onclick="addToCart('Salgadinhos')">Adicionar ao carrinho</a>            
+            </div>  
+        </div>
+    </div>
+
+    <!-- Modal do Carrinho -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cartModalLabel">Carrinho de Compras</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul id="cartItems" class="list-group">
+              <p>Confira seu carrinho !</p>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            <a href="../carrinho/carrinho.html" class="btn btn-primary">Ir para o Carrinho</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+      function deslogar(){
+        localStorage.clear();
+        window.location.href = "/index.html";
+      }
+
+      // Array para armazenar itens do carrinho
+      let cart = [];
+
+      // Função para adicionar produtos ao carrinho
+      function addToCart(productName) {
+        // Carrega o carrinho existente ou cria um novo array vazio se não houver itens
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        
+        // Adiciona o novo item ao array do carrinho
+        cart.push(productName);
+
+        // Atualiza o localStorage com o novo carrinho
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // Atualiza o modal para mostrar o carrinho atualizado
+        updateCartModal();
+
+        alert(productName + " foi adicionado ao carrinho!");
+    }
+
+
+
+      // Função para atualizar o modal do carrinho com os itens
+      function updateCartModal() {
+        const cartItems = document.getElementById("cartItems");
+        cartItems.innerHTML = ""; // Limpa o conteúdo atual
+
+        // Adiciona cada item do carrinho como um elemento na lista
+        cart.forEach((item, index) => {
+          const listItem = document.createElement("li");
+          listItem.className = "list-group-item d-flex justify-content-between align-items-center";
+          listItem.textContent = item;
+          
+          // Botão para remover o item do carrinho
+          const removeButton = document.createElement("button");
+          removeButton.className = "btn btn-sm btn-danger";
+          removeButton.textContent = "Remover";
+          removeButton.onclick = () => {
+            removeFromCart(index);
+          };
+          
+          listItem.appendChild(removeButton);
+          cartItems.appendChild(listItem);
+        });
+      }
+
+      // Função para remover itens do carrinho
+      function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCartModal();
+      }
+    </script>
+</body>
+</html>
