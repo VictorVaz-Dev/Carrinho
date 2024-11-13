@@ -15,8 +15,11 @@
         <div class="d-flex justify-content-between mt-4">
             <button class="btn btn-secondary" onclick="voltarHome()">Continuar Comprando</button>
             <button class="btn btn-primary" onclick="saveCartToFirebase()">Salvar Carrinho</button>
+            <button class="btn btn-primary" onclick="finalizarCompra()">Finalizar compra</button>
         </div>          
     </div>
+
+    
 
 
     <script type="module">
@@ -84,6 +87,22 @@
     </script>
 
     <script>
+        function finalizarCompra() {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (cart.length === 0) {
+                alert("Seu carrinho está vazio!");
+                return;
+            }
+
+            // Codifique os itens do carrinho para a URL
+            const cartItemsEncoded = encodeURIComponent(JSON.stringify(cart));
+            // Redireciona para a página de finalização com o carrinho como parâmetro
+            window.location.href = `../finalizar/finalizar.html?cart=${cartItemsEncoded}`;
+        }
+    </script>
+
+
+    <script>
         function loadCartItems() {
             const cartItemsContainer = document.getElementById("cartItemsContainer");
             cartItemsContainer.innerHTML = "";
@@ -91,7 +110,7 @@
             const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
             if (cart.length === 0) {
-                cartItemsContainer.innerHTML = "<p class='text-center'>O carrinho está vazio.</p>";
+                cartItemsContainer.innerHTML = "<p class='text-center'>Se você ja possuir produtos, espere o carrinho carregar.</p>";
                 return;
             }
 
@@ -131,7 +150,7 @@
         // }
 
         function voltarHome() {
-            window.location.href = "../../pages/home/home.html";
+            window.location.href = "../../pages/home/home.html";''
         }
 
         document.addEventListener("DOMContentLoaded", loadCartItems);

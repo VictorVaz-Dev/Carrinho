@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/finalizar/finalizar.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Finalizar Compra</h1>
+        
+        <div id="cartItemsContainer" class="mt-4">
+            <!-- Os itens do carrinho serão exibidos aqui -->
+        </div>
+
+        <form id="checkoutForm" class="mt-4">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="text" class="form-control" id="cpf" required>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Endereço</label>
+                <input type="text" class="form-control" id="address" required>
+            </div>
+            <div class="mb-3">
+                <label for="state" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="state" required>
+            </div>
+            <div class="mb-3">
+                <label for="paymentMethod" class="form-label">Método de Pagamento</label>
+                <select class="form-select" id="paymentMethod" required>
+                    <option value="">Escolha uma opção</option>
+                    <option value="cartao">Cartão</option>
+                    <option value="pix">Pix</option>
+                    <option value="boleto">Boleto</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="shippingCost" class="form-label">Frete</label>
+                <input type="text" class="form-control" id="shippingCost" readonly>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="calculateShipping()">Calcular Frete</button>
+            <button type="submit" class="btn btn-success mt-3">Finalizar Pedido</button>
+        </form>
+    </div>
+
+    <script>
+        function loadCartFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const cartItemsEncoded = urlParams.get('cart');
+
+            if (cartItemsEncoded) {
+                const cartItems = JSON.parse(decodeURIComponent(cartItemsEncoded));
+                displayCartItems(cartItems);
+                localStorage.setItem("cartSummary", JSON.stringify(cartItems)); // Armazena o resumo do carrinho
+            } else {
+                console.log("Nenhum item no carrinho.");
+            }
+        }
+
+        function displayCartItems(cartItems) {
+            const cartItemsContainer = document.getElementById("cartItemsContainer");
+            cartItemsContainer.innerHTML = "";
+
+            cartItems.forEach(item => {
+                const listItem = document.createElement("p");
+                listItem.textContent = item;
+                listItem.classList.add("cart-item");
+                cartItemsContainer.appendChild(listItem);
+            });
+        }
+
+        function calculateShipping() {
+            const state = document.getElementById("state").value.trim().toLowerCase();
+            const shippingCostInput = document.getElementById("shippingCost");
+
+            if (state === "são paulo" || state === "sp") {
+                shippingCostInput.value = "R$ 20,00";
+            } else {
+                shippingCostInput.value = "R$ 30,00";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadCartFromUrl);
+
+        document.getElementById("checkoutForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Captura as informações do formulário e do carrinho
+            const name = document.getElementById("name").value;
+            const cpf = document.getElementById("cpf").value;
+            const address = document.getElementById("address").value;
+            const state = document.getElementById("state").value;
+            const paymentMethod = document.getElementById("paymentMethod").value;
+            const shippingCost = document.getElementById("shippingCost").value;
+            const cartItems = JSON.parse(localStorage.getItem("cartSummary")) || [];
+
+            // Constrói a mensagem de resumo
+            const summaryMessage = `
+                Nome: ${name}
+                CPF: ${cpf}
+                Endereço: ${address}
+                Estado: ${state}
+                Método de Pagamento: ${paymentMethod.charAt(0).toUpperCase() + paymentMethod.slice(1)}
+                Frete: ${shippingCost}
+                
+                Produtos no Carrinho:
+                ${cartItems.map(item => `- ${item}`).join("\n")}
+            `;
+
+            // Exibe o resumo em um alert
+            alert("Resumo do Pedido:\n" + summaryMessage);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
