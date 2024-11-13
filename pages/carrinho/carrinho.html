@@ -75,9 +75,15 @@
             try {
                 const docRef = doc(db, "carts", userId);
                 const docSnap = await getDoc(docRef);
+                
                 if (docSnap.exists()) {
-                    const cartData = docSnap.data().items;
-                    localStorage.setItem("cart", JSON.stringify(cartData));
+                    const firebaseCart = docSnap.data().items || [];
+                    const localCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+                    // Mescla os itens do Firebase com os itens do localStorage, evitando duplicatas
+                    const mergedCart = [...localCart, ...firebaseCart.filter(item => !localCart.includes(item))];
+                    
+                    localStorage.setItem("cart", JSON.stringify(mergedCart));
                     loadCartItems();
                 }
             } catch (error) {
