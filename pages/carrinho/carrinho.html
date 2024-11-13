@@ -62,7 +62,6 @@
             try {
                 await setDoc(doc(db, "carts", userId), { items: cart });
                 alert("Carrinho salvo com sucesso no Firebase!");
-                localStorage.clear();
             } catch (error) {
                 console.error("Erro ao salvar o carrinho:", error);
                 alert("Erro ao salvar o carrinho.");
