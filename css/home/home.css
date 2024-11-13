@@ -1,10 +1,10 @@
 .banner-home{
-    background-image: url("../../assets/home/banner.jpg");
-    background-color: rgb(64, 51, 198);
+    background-image: url("../../assets/home/banner.webp");
+    background-color: rgb(214, 211, 191);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
-    height: 280px;
+    background-size: cover;
+    height: 220px;
     width: 100%;
 }
 
