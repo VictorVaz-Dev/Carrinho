@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/login/login.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container d-sm-flex justify-content-center flex-md-wrap">
         <div class="row justify-content-center mt-5">
-            <div class="col-md-4">
-                <h2 class="text-center">Login</h2>
+            <div class="col-md-14">
+                <h2 class="text-left">Login</h2>
+                <h5>Entre em sua conta green</h5>
+                <br>
                 <form id="loginForm">
                     <div class="form-group">
                         <label for="email">Email</label>
@@ -20,10 +23,15 @@
                         <label for="password">Senha</label>
                         <input type="password" id="password" class="form-control" placeholder="Digite sua senha" required>
                     </div>
-                    <button type="button" class="btn btn-primary btn-block" onclick="login()">Entrar</button>
-                    <button type="button" class="btn btn-primary btn-block" onclick="cadastro()">Não tem uma conta? Cadastre-se aqui</button>
+                    <button type="button" class="btn btn-success btn-block" onclick="login()">Entrar</button>
+                    <button type="button" class="btn btn-success btn-block" onclick="cadastro()">Não tem uma conta? Cadastre-se aqui</button>
                 </form>
                 <div id="loginStatus" class="text-center mt-3"></div>
+            </div>
+        </div>
+
+        <div class="justify-content-center">
+            <div class="image-login">
             </div>
         </div>
     </div>
