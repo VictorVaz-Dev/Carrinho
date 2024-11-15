@@ -1,3 +1,7 @@
+body{
+    overflow-x: hidden;
+}
+
 .image-login{
     background-image: url("../../assets/login/image-login-sem-fundo.png");
     background-size: contain;
@@ -5,4 +9,5 @@
     background-position: center;
     height: 500px;
     width: 600px;
+    margin-left: -70px;
 }
