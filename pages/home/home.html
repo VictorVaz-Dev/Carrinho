@@ -11,7 +11,11 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" style="color: rgb(42, 180, 42);"><b>Green Farm</b></a>
-          <form class="d-flex" role="search">
+          <div class="d-flex">
+            <input id="searchInput" class="form-control me-2" type="search" placeholder="Buscar produtos..." aria-label="Search">
+            <button class="btn btn-outline-success" type="button" onclick="searchProducts()">Buscar</button>
+          </div>
+          <form class="d-flex" role="search" onsubmit="return false;">
             <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#cartModal">&#x1F6D2; Carrinho</button>
             <button type="button" class="btn btn-outline-danger" onclick="deslogar()">Sair</button>
           </form>
@@ -27,146 +31,85 @@
    
     <h1 class="titulo-produto">Confira nossos produtos:</h1>
     <!-- Seção de produtos de limpeza -->
-    <div class="container d-flex">
-        <div class="card" style="width: 18rem;">
-            <img src="../../assets/produtos/tomate.webp" class="card-img-top" alt="...">
+    <div class="container d-flex flex-wrap">
+        <div class="card m-2" style="width: 18rem;" data-name="Tomate">
+            <img src="../../assets/produtos/tomate.webp" class="card-img-top" alt="Tomate">
             <div class="card-body">
-            <h5 class="card-title">Tomate 100g</h5>
-            <p class="card-text">🍅 Fresquinhos e cheios de sabor, nossos tomates vão dar um toque especial às suas receitas. Experimente! 🍅</p>
-            <p class="card-text">🍅 R$:10,00 🍅</p>
-            <a href="#" class="btn btn-success" onclick="addToCart('Tomate R$:10,00')">Adicionar ao carrinho</a>            
+                <h5 class="card-title">Tomate 100g</h5>
+                <p class="card-text">🍅 Fresquinhos e cheios de sabor, nossos tomates vão dar um toque especial às suas receitas. Experimente! 🍅</p>
+                <p class="card-text">🍅 R$:10,00 🍅</p>
+                <a href="#" class="btn btn-success" onclick="addToCart('Tomate R$:10,00')">Adicionar ao carrinho</a>            
             </div>
         </div>
 
-        <div class="card" style="width: 18rem;">
-            <img src="../../assets/produtos/alface.webp" class="card-img-top" alt="...">
+        <div class="card m-2" style="width: 18rem;" data-name="Alface">
+            <img src="../../assets/produtos/alface.webp" class="card-img-top" alt="Alface">
             <div class="card-body">
-            <h5 class="card-title">Alface</h5>
-            <p class="card-text">🥬 Crocante e fresquinha, nossa alface é perfeita para deixar suas saladas irresistíveis. Aproveite essa oportunidade! 🥬</p>
-            <p class="card-text">🥬 R$:4,00 🥬</p>
-            <a href="#" class="btn btn-success" onclick="addToCart('Alface R$:4,00')">Adicionar ao carrinho</a>            
+                <h5 class="card-title">Alface</h5>
+                <p class="card-text">🥬 Crocante e fresquinha, nossa alface é perfeita para deixar suas saladas irresistíveis. Aproveite essa oportunidade! 🥬</p>
+                <p class="card-text">🥬 R$:4,00 🥬</p>
+                <a href="#" class="btn btn-success" onclick="addToCart('Alface R$:4,00')">Adicionar ao carrinho</a>            
             </div>
         </div>
 
-        <div class="card" style="width: 18rem;">
-            <img src="../../assets/produtos/rucula.webp" class="card-img-top" alt="...">
+        <div class="card m-2" style="width: 18rem;" data-name="Rúcula">
+            <img src="../../assets/produtos/rucula.webp" class="card-img-top" alt="Rúcula">
             <div class="card-body">
-            <h5 class="card-title">Rúcula</h5>
-            <p class="card-text">🌱 Com um toque picante e frescor único, nossa rúcula é o ingrediente ideal para suas saladas e pratos. Experimente! 🌱</p>
-            <p class="card-text">🌱 R$:2,00 🌱</p>
-            <a href="#" class="btn btn-success" onclick="addToCart('Rúcula R$:2,00')">Adicionar ao carrinho</a>            
+                <h5 class="card-title">Rúcula</h5>
+                <p class="card-text">🌱 Com um toque picante e frescor único, nossa rúcula é o ingrediente ideal para suas saladas e pratos. Experimente! 🌱</p>
+                <p class="card-text">🌱 R$:2,00 🌱</p>
+                <a href="#" class="btn btn-success" onclick="addToCart('Rúcula R$:2,00')">Adicionar ao carrinho</a>            
             </div>
         </div>
 
-        <div class="card" style="width: 18rem;">
-            <img src="../../assets/produtos/cebola.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-            <h5 class="card-title">Cebola</h5>
-            <p class="card-text">🧅 Sabor marcante e frescor garantido! Nossa cebola é o ingrediente perfeito para realçar suas receitas. Aproveite! 🧅</p>
-            <p class="card-text">🧅 R$:9,00 🧅</p>
-            <a href="#" class="btn btn-success" onclick="addToCart('Cebola R$:9,00')">Adicionar ao carrinho</a>            
-            </div>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-          <img src="../../assets/produtos/cenoura.webp" class="card-img-top" alt="...">
-          <div class="card-body">
-          <h5 class="card-title">Cenoura</h5>
-          <p class="card-text">🥕 Doces e crocantes, nossas cenouras são ideais para dar sabor e cor às suas receitas. Experimente! 🥕</p>
-          <p class="card-text">🥕 R$:7,00 🥕</p>
-          <a href="#" class="btn btn-success" onclick="addToCart('Cenoura R$:7,00')">Adicionar ao carrinho</a>            
-          </div>
-        </div>
-
-        <div class="card" style="width: 18rem;">
-            <img src="../../assets/produtos/maca.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-            <h5 class="card-title">Maçã</h5>
-            <p class="card-text">🍎 Suculentas e cheias de sabor, nossas maçãs são perfeitas para lanches e receitas. Aproveite essa oportunidade! 🍎</p>
-            <p class="card-text">🍎 R$:13,00 🍎</p>
-            <a href="#" class="btn btn-success" onclick="addToCart('Maçã R$:13,00')">Adicionar ao carrinho</a>            
-            </div>
-        </div>
+        <!-- Adicione mais produtos seguindo o mesmo formato -->
     </div>
 
     <!-- Modal do Carrinho -->
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="cartModalLabel">Carrinho de Compras</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <ul id="cartItems" class="list-group">
-              <p>Confira seu carrinho !</p>
-            </ul>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-            <a href="../carrinho/carrinho.html" class="btn btn-primary">Ir para o Carrinho</a>
-          </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Carrinho de Compras</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="cartItems" class="list-group">
+                        <p>Confira seu carrinho!</p>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <a href="../carrinho/carrinho.html" class="btn btn-primary">Ir para o Carrinho</a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
-      function deslogar(){
-        localStorage.clear();
-        window.location.href = "/index.html";
-      }
+        function deslogar() {
+            localStorage.clear();
+            window.location.href = "/index.html";
+        }
 
-      // Array para armazenar itens do carrinho
-      let cart = [];
+        function addToCart(productName) {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push(productName);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(productName + " foi adicionado ao carrinho!");
+        }
 
-      // Função para adicionar produtos ao carrinho
-      function addToCart(productName) {
-        // Carrega o carrinho existente ou cria um novo array vazio se não houver itens
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        
-        // Adiciona o novo item ao array do carrinho
-        cart.push(productName);
+        function searchProducts() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const products = document.querySelectorAll(".card");
 
-        // Atualiza o localStorage com o novo carrinho
-        localStorage.setItem("cart", JSON.stringify(cart));
-
-        // Atualiza o modal para mostrar o carrinho atualizado
-        updateCartModal();
-
-        alert(productName + " foi adicionado ao carrinho!");
-    }
-
-      // Função para atualizar o modal do carrinho com os itens
-      function updateCartModal() {
-        const cartItems = document.getElementById("cartItems");
-        cartItems.innerHTML = ""; // Limpa o conteúdo atual
-
-        // Adiciona cada item do carrinho como um elemento na lista
-        cart.forEach((item, index) => {
-          const listItem = document.createElement("li");
-          listItem.className = "list-group-item d-flex justify-content-between align-items-center";
-          listItem.textContent = item;
-          
-          // Botão para remover o item do carrinho
-          const removeButton = document.createElement("button");
-          removeButton.className = "btn btn-sm btn-danger";
-          removeButton.textContent = "Remover";
-          removeButton.onclick = () => {
-            removeFromCart(index);
-          };
-          
-          listItem.appendChild(removeButton);
-          cartItems.appendChild(listItem);
-        });
-      }
-
-      // Função para remover itens do carrinho
-      function removeFromCart(index) {
-        cart.splice(index, 1);
-        updateCartModal();
-      }
+            products.forEach((product) => {
+                const productName = product.getAttribute("data-name").toLowerCase();
+                product.style.display = productName.includes(searchInput) ? "block" : "none";
+            });
+        }
     </script>
 </body>
 </html>
