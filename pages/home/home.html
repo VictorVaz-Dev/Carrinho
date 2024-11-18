@@ -30,7 +30,7 @@
     </div>
    
     <h1 class="titulo-produto">Confira nossos produtos:</h1>
-    <!-- Seção de produtos de limpeza -->
+    <!-- Seção de produtos -->
     <div class="container d-flex flex-wrap">
         <div class="card m-2" style="width: 18rem;" data-name="Tomate">
             <img src="../../assets/produtos/tomate.webp" class="card-img-top" alt="Tomate">
@@ -62,7 +62,35 @@
             </div>
         </div>
 
-        <!-- Adicione mais produtos seguindo o mesmo formato -->
+        <div class="card" style="width: 18rem;" data-name="Cebola">
+          <img src="../../assets/produtos/cebola.webp" class="card-img-top" alt="...">
+          <div class="card-body">
+          <h5 class="card-title">Cebola</h5>
+          <p class="card-text">🧅 Sabor marcante e frescor garantido! Nossa cebola é o ingrediente perfeito para realçar suas receitas. Aproveite! 🧅</p>
+          <p class="card-text">🧅 R$:9,00 🧅</p>
+          <a href="#" class="btn btn-success" onclick="addToCart('Cebola R$:9,00')">Adicionar ao carrinho</a>            
+          </div>
+      </div>
+
+      <div class="card" style="width: 18rem;" data-name="Cenoura"> 
+        <img src="../../assets/produtos/cenoura.webp" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">Cenoura</h5>
+        <p class="card-text">🥕 Doces e crocantes, nossas cenouras são ideais para dar sabor e cor às suas receitas. Experimente! 🥕</p>
+        <p class="card-text">🥕 R$:7,00 🥕</p>
+        <a href="#" class="btn btn-success" onclick="addToCart('Cenoura R$:7,00')">Adicionar ao carrinho</a>            
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;" data-name="Maçã">
+          <img src="../../assets/produtos/maca.webp" class="card-img-top" alt="...">
+          <div class="card-body">
+          <h5 class="card-title">Maçã</h5>
+          <p class="card-text">🍎 Suculentas e cheias de sabor, nossas maçãs são perfeitas para lanches e receitas. Aproveite essa oportunidade! 🍎</p>
+          <p class="card-text">🍎 R$:13,00 🍎</p>
+          <a href="#" class="btn btn-success" onclick="addToCart('Maçã R$:13,00')">Adicionar ao carrinho</a>            
+          </div>
+      </div>
     </div>
 
     <!-- Modal do Carrinho -->
