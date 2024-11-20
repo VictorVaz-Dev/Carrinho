@@ -3,11 +3,17 @@ body{
 }
 
 .image-login{
-    background-image: url("../../assets/login/image-login-sem-fundo.png");
+    background-image: url("../../assets/login/greenfarm.jpeg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     height: 500px;
     width: 600px;
-    margin-left: -70px;
+    margin-left: 20px;
+}
+
+@media screen and (max-width:700px) {
+    .image-login{
+        display: none;
+    }
 }
