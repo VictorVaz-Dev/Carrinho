@@ -20,4 +20,17 @@ Bem-vindo ao projeto **Carrinho de Compras**, um site simples e funcional com um
 1. Clone o repositório:
    ```bash
    git clone https://github.com/VictorVaz-Dev/Carrinho.git
+   
+2. Abra o arquivo index.html com o Live Server:
+   ```bash
+   ⚠️ É importante rodar o Live Server somente na página index.html, para que todos os recursos funcionem corretamente.
+
+# 🧰 Tecnologias utilizadas
+
+- 🧱 HTML5
+
+- 🎨 CSS3
+
+- ⚙️ JavaScript Vanilla
+
 
